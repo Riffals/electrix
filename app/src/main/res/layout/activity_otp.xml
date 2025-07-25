@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".OTPActivity">
+
+    <!-- Toolbar -->
+    <ImageView
+        android:id="@+id/otp_toolbar_back_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="75dp"
+        android:contentDescription="Kembali ke halaman sebelumnya"
+        android:src="@drawable/arrow_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="20dp" />
+
+    <TextView
+        android:id="@+id/otp_toolbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Verifikasi Kode OTP"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/otp_toolbar_back_icon"
+        app:layout_constraintStart_toEndOf="@id/otp_toolbar_back_icon"
+        app:layout_constraintTop_toTopOf="@id/otp_toolbar_back_icon" />
+
+    <!-- Deskripsi -->
+    <TextView
+        android:id="@+id/otp_desc_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:textSize="14sp"
+        android:text="Masukkan kode yang telah diterima. Kode telah dikirimkan ke e-mail husnaer34@gmail.com"
+        android:textColor="#000000"
+        app:layout_constraintTop_toBottomOf="@id/otp_toolbar_back_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Button -->
+    <Button
+        android:id="@+id/otp_verify_button"
+        android:layout_width="300dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="100dp"
+        android:backgroundTint="#3563F3"
+        android:text="Lanjut"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!--  Input OTP  -->
+    <LinearLayout
+        android:id="@+id/otp_input_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="25dp"
+        app:layout_constraintTop_toBottomOf="@id/otp_desc_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- 6 OTP Box -->
+        <EditText
+            android:id="@+id/otp_digit_1"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/otp_edittext_background"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textColor="#000000"
+            android:layout_margin="6dp"/>
+
+        <EditText
+            android:id="@+id/otp_digit_2"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/otp_edittext_background"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textColor="#000000"
+            android:layout_margin="6dp"/>
+
+        <EditText
+            android:id="@+id/otp_digit_3"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/otp_edittext_background"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textColor="#000000"
+            android:layout_margin="6dp"/>
+
+        <EditText
+            android:id="@+id/otp_digit_4"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/otp_edittext_background"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textColor="#000000"
+            android:layout_margin="6dp"/>
+
+        <EditText
+            android:id="@+id/otp_digit_5"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/otp_edittext_background"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textColor="#000000"
+            android:layout_margin="6dp"/>
+
+        <EditText
+            android:id="@+id/otp_digit_6"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/otp_edittext_background"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textColor="#000000"
+            android:layout_margin="6dp"/>
+    </LinearLayout>
+
+    <!-- Timer -->
+    <TextView
+        android:id="@+id/otp_resend_timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Kirim ulang 0:59"
+        android:textColor="#666666"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/otp_input_container" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

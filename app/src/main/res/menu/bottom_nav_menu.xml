@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_beranda"
+        android:icon="@drawable/beranda2"
+        android:title="Beranda" />
+
+    <item
+        android:id="@+id/nav_listrik"
+        android:icon="@drawable/listrik2"
+        android:title="Listrik" />
+
+    <item
+        android:id="@+id/nav_riwayat"
+        android:icon="@drawable/riwayat2"
+        android:title="Riwayat" />
+
+    <item
+        android:id="@+id/nav_profil"
+        android:icon="@drawable/profil2"
+        android:title="Profil" />
+
+</menu>

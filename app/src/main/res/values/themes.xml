@@ -1,0 +1,25 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Electrix" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="android:windowBackground">@android:color/white</item>
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <!--  hilangkan overlay  -->
+    <style name="Widget.BottomNavigationView.NoShadow" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
+        <item name="android:elevation">0dp</item>
+        <item name="elevation">0dp</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:background">@android:color/white</item>
+    </style>
+
+    <!-- Spinner Dropdown Putih gk kepake -->
+    <style name="Widget.App.Spinner.White" parent="Widget.AppCompat.Spinner">
+        <item name="android:popupBackground">@android:color/white</item>
+        <item name="android:backgroundTint">@android:color/white</item>
+        <item name="android:background">@drawable/rounded_border_beranda</item>
+    </style>
+
+    <style name="Theme.Electrix" parent="Base.Theme.Electrix" />
+</resources>

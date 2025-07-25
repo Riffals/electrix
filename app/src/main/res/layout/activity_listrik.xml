@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <!-- Judul Halaman -->
+    <TextView
+        android:id="@+id/listrik_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
+        android:text="Monitoring Listrik"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- ScrollView utama -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/listrik_tv_title"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Label & Nilai Konsumsi Energi -->
+            <TextView
+                android:id="@+id/listrik_tv_konsumsi_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Konsumsi Energi"
+                android:textColor="#999999"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:id="@+id/listrik_tv_konsumsi_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="36.000 kWh"
+                android:textColor="#2563EB"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_marginTop="4dp" />
+
+            <!-- Toggle Bulanan -->
+            <LinearLayout
+                android:id="@+id/listrik_toggle_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:id="@+id/listrik_btn_bulanan"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/bg_toggle_active_listrik"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/bolt_yellow" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bulanan"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:layout_marginStart="8dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Chart -->
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/listrik_line_chart"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Judul & Tab -->
+            <TextView
+                android:id="@+id/listrik_batas_penggunaan_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pengaturan Listrik"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout_mode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:tabIndicatorColor="#2563EB"
+                app:tabSelectedTextColor="#2563EB"
+                app:tabTextColor="#999999"
+                app:tabIndicatorHeight="3dp" />
+
+            <!-- Container Treshold Section (Grid + Edit Button) -->
+            <LinearLayout
+                android:id="@+id/layout_threshold_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:visibility="visible">
+
+            <!-- Grid Parameter (treshold) -->
+            <GridLayout
+                android:id="@+id/gridParameter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:padding="8dp"
+                android:layout_marginTop="8dp">
+
+                <!-- Card Under Voltage-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_card_tegangan"
+                    android:gravity="center"
+                    android:padding="12dp">
+                    <ImageView android:layout_width="40dp" android:layout_height="40dp" android:src="@drawable/wave1" />
+                    <TextView android:text="Teg. Bawah" android:textColor="#007C99" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <EditText
+                            android:id="@+id/input_under_voltage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:text="180.0"
+                            android:gravity="end"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="#007C99"
+                            android:enabled="false"/>
+
+                        <TextView
+                            android:id="@+id/text_under_voltage_unit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="V"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:textColor="#007C99"
+                            android:layout_marginStart="6dp" />
+                        <!--                <TextView android:text="180.94 V" android:textColor="#007C99" android:textSize="20sp" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content"/>-->
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Card Over Voltage -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_card_pf"
+                    android:gravity="center"
+                    android:padding="12dp">
+                    <ImageView android:layout_width="40dp" android:layout_height="40dp" android:src="@drawable/wave6" />
+                    <TextView android:text="Teg. Atas" android:textColor="#34D399" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <EditText
+                            android:id="@+id/input_over_voltage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:text="250.0"
+                            android:gravity="end"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="#34D399"
+                            android:enabled="false"/>
+
+                        <TextView
+                            android:id="@+id/text_over_voltage_unit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="V"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:textColor="#34D399"
+                            android:layout_marginStart="6dp" />
+                        <!--                        <TextView android:text="250.73 V" android:textColor="#F3A46F" android:textSize="20sp" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content"/>-->
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Card Under Frequency -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_card_frekuensi"
+                    android:gravity="center"
+                    android:padding="12dp">
+                    <ImageView android:layout_width="40dp" android:layout_height="40dp" android:src="@drawable/wave4" />
+                    <TextView android:text="Frek. Bawah" android:textColor="#F472B6" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <EditText
+                            android:id="@+id/input_under_freq"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:text="49.5"
+                            android:gravity="end"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="#F472B6"
+                            android:enabled="false"/>
+
+                        <TextView
+                            android:id="@+id/text_under_freq_unit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Hz"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:textColor="#F472B6"
+                            android:layout_marginStart="6dp" />
+                        <!--                        <TextView android:text="49.9 Hz" android:textColor="#F472B6" android:textSize="20sp" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content"/>-->
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Card Over Frequency -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_card_energi"
+                    android:gravity="center"
+                    android:padding="12dp">
+                    <ImageView android:layout_width="40dp" android:layout_height="40dp" android:src="@drawable/wave5" />
+                    <TextView android:text="Frek. Atas" android:textColor="#F87171" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <EditText
+                            android:id="@+id/input_over_freq"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:text="50.5"
+                            android:gravity="end"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="#F87171"
+                            android:enabled="false"/>
+
+                        <TextView
+                            android:id="@+id/text_over_freq_unit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Hz"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:textColor="#F87171"
+                            android:layout_marginStart="6dp" />
+                        <!--                        <TextView android:text="49.9 Hz" android:textColor="#F87171" android:textSize="20sp" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content"/>-->
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Card pf-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_columnSpan="2"
+                    android:layout_margin="8dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_card_daya"
+                    android:gravity="center"
+                    android:padding="12dp">
+                    <ImageView android:layout_width="40dp" android:layout_height="40dp" android:src="@drawable/wave3" />
+                    <TextView android:text="Faktor Daya" android:textColor="#6366F1" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <EditText
+                            android:id="@+id/input_under_pf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:text="0.85"
+                            android:gravity="end"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="#6366F1"
+                            android:enabled="false"/>
+                        <!--                        <TextView android:text="0.53" android:textColor="#6366F1" android:textSize="20sp" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content"/>-->
+                    </LinearLayout>
+                </LinearLayout>
+            </GridLayout>
+            <!-- Tombol Edit/Simpan -->
+            <Button
+                android:id="@+id/btn_edit_threshold"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="Edit"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#2563EB" />
+            </LinearLayout>
+
+            <!-- Date Picker: start_day & end_day -->
+            <LinearLayout
+                android:id="@+id/layout_billing_settings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:layout_marginTop="16dp"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tanggal Awal Penagihan"
+                    android:textSize="14sp"
+                    android:textColor="#000000"
+                    android:layout_marginTop="8dp" />
+
+                <NumberPicker
+                    android:id="@+id/picker_start_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tanggal Akhir Penagihan"
+                    android:textSize="14sp"
+                    android:textColor="#000000"
+                    android:layout_marginTop="8dp" />
+
+                <NumberPicker
+                    android:id="@+id/picker_end_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true" />
+
+                <Button
+                    android:id="@+id/btn_save_billing_settings"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="Edit"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:backgroundTint="#2563EB" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom NavBar -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        style="@style/Widget.BottomNavigationView.NoShadow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itemBackground="@android:color/transparent"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemRippleColor="@android:color/transparent"
+        app:itemTextColor="@color/selector_bottom_nav_text"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

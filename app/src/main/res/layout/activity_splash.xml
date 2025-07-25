@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".SplashActivity">
+
+    <!-- Logo Electrix -->
+    <ImageView
+        android:id="@+id/logoElectrix"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:contentDescription="Logo Electrix"
+        android:scaleType="fitCenter"
+        android:src="@drawable/logo_electrix"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintDimensionRatio="6:2" /> <!-- Rasio 3:1, sesuaikan sesuai proporsi logo -->
+
+    <!-- Splash Image -->
+    <ImageView
+        android:id="@+id/splashElectrix"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="Splash Electrix"
+        android:scaleType="fitCenter"
+        android:src="@drawable/splash"
+        app:layout_constraintTop_toBottomOf="@id/logoElectrix"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1" /> <!-- Rasio 1:1 atau sesuaikan -->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

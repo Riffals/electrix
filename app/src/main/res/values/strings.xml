@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Electrix</string>
+    <string name="otp_desc_text"><![CDATA[Masukkan kode yang telah diterima. Kode telah dikirimkan ke e-mail <b>husnaer34@gmail.com</b>\n]]></string>
+</resources>
